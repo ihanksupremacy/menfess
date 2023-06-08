@@ -47,29 +47,44 @@
               <img src="https://source.unsplash.com/500x400/?cartoon" alt="Profile Picture">
               <div class="profile-user-info">
                 <h1>{{$user->name}}</h1>
-                @if(!empty($isSelf) && $isSelf == false)
-                <button>Add friend</button>
-                @endif
-                
+                @if(Auth::check() && $user->id === Auth::user()->id)
+                <a href="#" class="editprofil">Edit Profil</a>
+            @else
+            @if(Auth::check() && Auth::user()->isFollowing($user->id))
+            <form method="POST" action="{{ route('follow.destroy', $user->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Unfollow</button>
+            </form>
+        @else
+            <form method="POST" action="{{ route('follow.store') }}">
+                @csrf
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                <button type="submit">Follow</button>
+            </form>
+        @endif
+        
+            @endif
+            
               </div>
             </div>
             <div class="profile-stats">
               <div class="stat">
-                <span>100</span>
+                <span>{{ $user->posts()->count() }}</span>
                 <p>Posts</p>
               </div>
               <div class="stat">
-                <span>1M</span>
+                <span>{{ $user->followers()->count() }}</span>
                 <p>Followers</p>
-              </div>
-              <div class="stat">
-                <span>500</span>
+            </div>
+            <div class="stat">
+                <span>{{ $user->followings()->count() }}</span>
                 <p>Following</p>
-              </div>
+            </div>
             </div>
             <div class="profile-description">
               <h2>About me</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet nibh vel lectus lobortis, ac euismod risus tincidunt. Sed convallis ex sit amet turpis interdum, vel cursus libero consectetur. Proin quis lacinia eros.</p>
+              <p>{{$user->aboutme}}</p>
             </div>
           </div>
           

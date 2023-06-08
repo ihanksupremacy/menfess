@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorecommentRequest;
 use App\Http\Requests\UpdatecommentRequest;
 use App\Models\comment;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -21,16 +22,34 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('comment.create');
+    
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorecommentRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Validasi input jika diperlukan
+        $request->validate([
+            'isicomment' => 'required',
+        ]);
+    
+        // Buat postingan baru
+        $comment = new Comment();
+        $comment->isicomment = $request->input('isicomment');
+        $comment->user_id = auth()->user()->id; // Jika menggunakan autentikasi pengguna
+        $comment->post_id = $request->input('post_id'); // Ubah ini sesuai dengan nama input yang sesuai
+        $comment->save();
+    
+        // Redirect atau melakukan tindakan lain setelah penyimpanan
+        // ...
+    
+        return redirect()->back();
     }
+
 
     /**
      * Display the specified resource.

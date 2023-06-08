@@ -54,11 +54,9 @@
             <p class="post-text">
                 {{ $post->isi }}
             </p>
-            <img
-              class="post-image"
-              src="https://via.placeholder.com/500x300.png?text=Post+Image"
-              alt="Post Image"
-            />
+            @if (isset($post->image))
+            <img class="post-image" src="{{ asset($post->image) }}" alt="Gambar">
+            @endif
            
 
             <div class="post-actions">
@@ -76,6 +74,19 @@
               <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></a>
             </div>
             <br>
+            <hr>
+
+            <div class="upload">
+              <form method="POST" action="{{ route('comment.store') }}" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="post_id" value="{{ $post->id }}">
+                  <input type="text" name="isicomment" id="otherText" placeholder="update menfess anda">
+                  
+                  <div id="image-preview"></div>
+                  <button type="submit">Post</button>
+              </form>
+          </div>
+          
 
             @foreach ($comments as $comment)
             <div class="comment">
@@ -96,7 +107,7 @@
 
     </main>
     <footer>
-      <p>&copy; 2023 Social Media. All rights reserved.</p>
+      {{-- <p>&copy; 2023 Social Media. All rights reserved.</p> --}}
     </footer>
   </body>
 </html>

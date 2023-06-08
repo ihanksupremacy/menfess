@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Custom styles for this template -->
+   
     <link href="css/sign-in.css" rel="stylesheet">
   </head>
   <body class="text-center bg-dark text-light">
@@ -46,4 +46,37 @@
 
     
   </body>
+</html> --}}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <link rel="stylesheet" href="/css/login/style.css">
+</head>
+<body>
+  <div class="container">
+    {{-- <img class="gambar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHMplHP5wWvFAZUusPdeSw_ppjTuEGtQ9Y0w&usqp=CAU" alt="">
+     --}}
+     <img src="/images/view.png" alt="" class="gambar">
+    <form action="/login" method="POST">
+      @csrf 
+        <img src="/images/logo.png" alt="" class="logo">
+        <h2>Please sign in</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="password">
+      </div>
+      <a class="lupa" href="#">Lupa Password?</a>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</body>
 </html>
+

@@ -8,12 +8,17 @@ use App\Models\user;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\likeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\followController;
+use App\Http\Controllers\ChatController;
 
 Route::get('/', [App\Http\Controllers\Postcontroller::class, 'index']);
 Route::get('/post/{id}', [App\Http\Controllers\Postcontroller::class, 'show']);
 Route::post('/posting', [App\Http\Controllers\Postcontroller::class, 'store'])->name('post.store');
 
-
+Route::get('/tes', function () {
+    return view('tes');
+});
 
 Route::get('profile/{user:username}',[App\Http\Controllers\usercontroller::class, 'show']);
 //Route::get('/login',[App\Http\Controllers\loginController::class, 'index']);
@@ -21,7 +26,12 @@ route::get('login/',[LoginController::class, 'index'])->middleware('guest');
 route::post('login/',[LoginController::class, 'authenticate']);
 route::post('logout/',[LoginController::class, 'logout']);
 Route::post('/like/{id}',[likeController::class, 'like'])->name('like');
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
+Route::get('/search', [App\Http\Controllers\searchcontroller::class, 'index'])->name('search.index');
+
+Route::get('/chats/{user:username}', [ChatController::class, 'index'])->name('chats.index');
+Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
 
 route::get('register/',[registerController::class, 'index']);
 route::post('register/',[RegisterController::class, 'store']);
@@ -30,4 +40,13 @@ route::post('register/',[RegisterController::class, 'store']);
 //     return view('index',[
 //     ]);
 // });
+
+// routes/web.php
+
+
+
+Route::post('/postingcoment', [App\Http\Controllers\Commentcontroller::class, 'store'])->name('comment.store');
+Route::post('/follow', [App\Http\Controllers\followcontroller::class, 'store'])->name('follow.store');
+Route::delete('/follow/{user}', [App\Http\Controllers\followController::class, 'destroy'])->name('follow.destroy');
+
 

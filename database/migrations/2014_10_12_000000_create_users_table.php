@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-
-            
+            $table->text('aboutme')->nullable()->default(''); // Tambahkan nullable() dan default('')
         });
     }
+    
 
     /**
      * Reverse the migrations.

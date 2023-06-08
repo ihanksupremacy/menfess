@@ -83,6 +83,17 @@ public function store(Request $request)
 
     return redirect()->back();
 }
+public function search(Request $request)
+{
+    $searchTerm = $request->input('q');
+    $posts = Post::where('title', 'like', '%' . $searchTerm . '%')
+        ->orWhere('content', 'like', '%' . $searchTerm . '%')
+        ->get();
+    return view('posts.search', compact('posts'));
+}
+// }
+
+
 
 
 
