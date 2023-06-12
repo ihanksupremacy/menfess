@@ -12,20 +12,25 @@ class ChatController extends Controller
     {
         $chats = Chat::all();
         $users = User::all();
-        
+        $userName = auth()->check() ? auth()->user()->username : null;
         $receiver = $user;
         
-        return view('chat.index', compact('chats', 'receiver', 'users'));
+        return view('chat.index', compact('chats', 'receiver', 'userName', 'users'));
     }
     
     public function store(Request $request)
-{
-    $chats = new chat();
-    $chats->sender_id = auth()->user()->id;
-    $chats->receiver_id = $request->input('receiver_id');
-    $chats->isipesan = $request->input('isipesan');
-    $chats->save();
+    {
+        $request->validate([
+            'receiver_id' => 'required',
+            'isipesan' => 'required',
+        ]);
 
-    return redirect()->back();
-}
+        $chat = new Chat();
+        $chat->sender_id = auth()->user()->id;
+        $chat->receiver_id = $request->input('receiver_id');
+        $chat->isipesan = $request->input('isipesan');
+        $chat->save();
+
+        return redirect()->back();
+    }
 }

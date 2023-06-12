@@ -29,7 +29,20 @@ public function destroy($user)
         $follow->delete();
     }
 
+
     return redirect()->back();}
+    public function index()
+    {
+        $userName = auth()->user()->username;
+        $username = auth()->user();
+        $followerIds = $username->followings->pluck('id');
+        $followers = User::whereIn('id', $followerIds)->get();
+    
+        return view('chat.chat', compact('followers','userName'));
+    }
+    
+    
+
 
 
 }

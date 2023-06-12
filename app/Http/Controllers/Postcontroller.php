@@ -17,20 +17,7 @@ class Postcontroller extends Controller
     }
     
 
-    // public function show($id) {
-    //     $post = Post::find($id);
-    //     $comment   = comment::all();
-    //     return view('/postingan/index', ['posts' => $post, 'comments' => $post->comments->isicomment]);
 
-    //     //return view('/postingan/index')->with('posts', $post);
-        
-    // }
-    // public function show($id)
-// {
-//     $post = Post::find($id);
-//     $comments = $post->comments ? $post->comments->pluck('isicomment') : null;
-//     return view('/postingan/index', ['post' => $post, 'comments' => $comments]);
-// }
 public function show($id)
 {
     $post = Post::findOrFail($id);
@@ -41,15 +28,6 @@ public function show($id)
 }
 
 
-//     public function show(Post $post)
-// {
-//     $comments = Comment::where('post_id', $post->id)->get();
-
-//     return view('postingan.index', [
-//         'posts' => $post,
-//         'comments' => $comments
-//     ]);
-// }
 public function create()
 {
     return view('post.create');

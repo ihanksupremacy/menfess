@@ -9,41 +9,13 @@
   </head>
   <body>
     <header>
-     <a href=""><h1>Menfess</h1></a> 
-      <nav>
-        <ul>
-      
-          <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a></li>
-          @auth
-          <li><form action="/logout" method="POST">@csrf<button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg></button></form></li>
-          {{-- <li><a href="/logout">logout</a></li> --}}
-
-          @else
-          <li><a href="login"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a></li>
-          @endauth
-          
-        </ul>
-      </nav>
-      <div class="sidebar">
-        <ul>
-          @auth
-          <li><a href="/profile/{{ $userName }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a></li>
-          @else
-          <li><a href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a></li>
-          @endauth
-            
-            <li><a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a></li>
-            <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></a></li>
-            <li><a href="/search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a></li>
-            <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></a></li>
-            <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a></li>
-        </ul>
-    </div>
+      @include('navbar.navbar')
 
  
     </header>
     <main>
       <div class="upload">
+        @auth
         <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
             @csrf
             <input type="text" name="isi" id="otherText" placeholder="update menfess anda">
@@ -58,6 +30,7 @@
             <div id="image-preview"></div>
             <button type="submit">Post</button>
         </form>
+        @endauth
     </div>
     
     
@@ -76,15 +49,12 @@
     </script>
     
     <hr class="pembatasupload">
-      
     
-        
-        
         <div class="post">
             @foreach ($posts as $post)
             <div class="user-info">
               <img
-                src="https://via.placeholder.com/50x50.png?text=Profile+Picture"alt="Profile Picture"
+                src="data:image/png;base64,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"alt="Profile Picture"
               />
               <div class="user-name">
                 <h2>Anonymouse</h2>

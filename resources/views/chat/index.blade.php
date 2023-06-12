@@ -1,46 +1,19 @@
-
 <head>
     <link rel="stylesheet" href="/css/chats/style.css">
+    <title>chat</title>
 </head>
-
+<header>
+    @include('navbar.navbar')
+</header>
 
 <div class="chat-container">
-    <div class="sidebar">
-        <div class="sidebar-header">User Lain</div>
-        @php
-            $userNames = [];
-        @endphp
-        @foreach ($chats as $chat)
-            @if ($chat->sender_id !== auth()->id() && !in_array($chat->sender->name, $userNames))
-                @php
-                    $userNames[] = $chat->sender->name;
-                @endphp
-                <div class="sidebar-user">
-                    <img src="https://source.unsplash.com/500x400/?cartoon" alt="Profile Picture">
-                    <a href="{{ route('chats.index', $chat->sender->username) }}">{{ $chat->sender->name }}</a>
-                </div>
-            @endif
-            @if ($chat->receiver_id !== auth()->id() && !in_array($chat->receiver->name, $userNames))
-                @php
-                    $userNames[] = $chat->receiver->name;
-                @endphp
-                <div class="sidebar-user">
-                    <img src="https://source.unsplash.com/500x400/?cartoon" alt="Profile Picture">
-                    <a href="{{ route('chats.index', $chat->receiver->username) }}">{{ $chat->receiver->name }}</a>
-                </div>
-            @endif
-        @endforeach
-        @if (empty($userNames))
-            <div class="sidebar-user">
-                Tidak ada pengguna lain.
-            </div>
-        @endif
-    </div>
-
     <div class="chat-content">
         <!-- Header dengan nama pengguna -->
         <div class="chat-header">
-            Chat dengan: {{ $receiver->name }}
+            <div class="profile-pic-container">
+                <img class="profile-pic" src="{{ asset($receiver->foto) }}" alt="">
+                <span class="receiver-name">{{ $receiver->name }}</span>
+            </div>
         </div><br><br>
 
         <!-- Menampilkan pesan-pesan -->

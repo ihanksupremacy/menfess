@@ -10,15 +10,18 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword');
+        $userName = auth()->check() ? auth()->user()->username : null;
+        $keyword = $request->input('query');
 
         $users = User::where('name', 'LIKE', "%{$keyword}%")->get();
-        $posts = Post::where('title', 'LIKE', "%{$keyword}%")->get();
+        $posts = Post::where('isi', 'LIKE', "%{$keyword}%")->get();
 
-        return view('search', compact('users', 'posts'));
+        return view('search.results', compact('users', 'posts','userName'));
     }
+    
     public function index()
-{
-    return view('search.index');
-}
+    {
+        $userName = auth()->check() ? auth()->user()->username : null;
+        return view('search.index', compact('userName'));
+    }
 }

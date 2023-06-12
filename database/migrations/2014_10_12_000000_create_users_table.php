@@ -21,6 +21,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->text('aboutme')->nullable()->default(''); // Tambahkan nullable() dan default('')
+            $table->text('foto')->nullable(); // Tambahkan field 'foto' dengan nullable()
         });
     }
     

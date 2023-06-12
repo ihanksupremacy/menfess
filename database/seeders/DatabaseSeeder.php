@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         \App\Models\post::factory(20)->create();
         \App\Models\comment::factory(50)->create();
+        \App\Models\like::factory(50)->create();
         $this->call(userSeeder::class);
     }
 }

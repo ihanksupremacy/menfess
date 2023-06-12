@@ -1,4 +1,4 @@
-.chat-container {
+/* .chat-container {
     display: flex;
 }
 
@@ -35,11 +35,12 @@
 
 .sidebar-user a:hover {
     text-decoration: underline;
-}
+} */
 
 .chat-content {
     flex: 1;
     padding: 10px;
+    margin-left: 100px;
 }
 
 .chat-header {
@@ -47,6 +48,7 @@
     background-color: #f2f2f2;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
+    margin-top: 10vh;
 }
 
 .chat-form {
@@ -102,3 +104,24 @@
     margin-top: 5px;
 }
 
+.profile-pic {
+    width: 5vh;
+    margin-right: 10px;
+}
+.chat-header .receiver-name {
+    flex-grow: 1;
+}
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    text-align: left;
+}
+a{
+    text-decoration: none;
+    color: #333
+}

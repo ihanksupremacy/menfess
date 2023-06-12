@@ -11,6 +11,11 @@ use App\Http\Controllers\likeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\followController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\usercontroller;
+
+Route::get('/profile/edit', [usercontroller::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [usercontroller::class, 'update'])->name('profile.update');
+
 
 Route::get('/', [App\Http\Controllers\Postcontroller::class, 'index']);
 Route::get('/post/{id}', [App\Http\Controllers\Postcontroller::class, 'show']);
@@ -20,15 +25,23 @@ Route::get('/tes', function () {
     return view('tes');
 });
 
-Route::get('profile/{user:username}',[App\Http\Controllers\usercontroller::class, 'show']);
+Route::get('profile/{user:username}',[usercontroller::class, 'show']);
+
+
+Route::get('/chats', [followController::class, 'index']);
+
+
+
+
 //Route::get('/login',[App\Http\Controllers\loginController::class, 'index']);
 route::get('login/',[LoginController::class, 'index'])->middleware('guest');
 route::post('login/',[LoginController::class, 'authenticate']);
 route::post('logout/',[LoginController::class, 'logout']);
 Route::post('/like/{id}',[likeController::class, 'like'])->name('like');
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
+Route::get('/search/results', [App\Http\Controllers\SearchController::class, 'search'])->name('search.results');
 
-Route::get('/search', [App\Http\Controllers\searchcontroller::class, 'index'])->name('search.index');
+
 
 Route::get('/chats/{user:username}', [ChatController::class, 'index'])->name('chats.index');
 Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
