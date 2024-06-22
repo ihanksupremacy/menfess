@@ -15,7 +15,12 @@ class Postcontroller extends Controller
         $name = auth()->check() ? auth()->user()->name : null;
         return view('beranda.index', compact('posts', 'userName', 'name'));
     }
-    
+    public function trending()
+{
+    $posts = Post::withCount('likes')->orderByDesc('likes_count')->get();
+    $userName = auth()->check() ? auth()->user()->username : null;
+    return view('beranda.trending', compact('posts','userName'));
+}
 
 
 public function show($id)

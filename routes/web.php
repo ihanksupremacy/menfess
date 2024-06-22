@@ -18,6 +18,7 @@ Route::post('/profile/update', [usercontroller::class, 'update'])->name('profile
 
 
 Route::get('/', [App\Http\Controllers\Postcontroller::class, 'index']);
+Route::get('/trending', [App\Http\Controllers\Postcontroller::class, 'trending']);
 Route::get('/post/{id}', [App\Http\Controllers\Postcontroller::class, 'show']);
 Route::post('/posting', [App\Http\Controllers\Postcontroller::class, 'store'])->name('post.store');
 
@@ -29,6 +30,8 @@ Route::get('profile/{user:username}',[usercontroller::class, 'show']);
 
 
 Route::get('/chats', [followController::class, 'index']);
+Route::get('/follower/{user:username}', [followController::class, 'follower']);
+Route::get('/following/{user:username}', [followController::class, 'following']);
 
 
 

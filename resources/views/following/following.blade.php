@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>daftar chat</title>
+    <title>follower</title>
     <!-- Include your CSS styles here -->
 </head>
 <style>
@@ -48,12 +48,12 @@
     <header>
         @include('navbar.navbar')
     </header>
-    <h1 style="margin-top:10vh;">daftar chat</h1>
+    <h1 style="margin-top:10vh;">follower</h1>
 <div class="container">
     <div class="following-users">
         <ul>
             @foreach ($followers as $follower)
-            <a href="/chats/{{$follower->username}}"> <li>
+            <a href="/profile/{{$follower->username}}"> <li>
             @if (isset($follower->foto))
             <img class="profile-pic" src="{{ asset($follower->foto) }}" alt="Gambar">
             @else

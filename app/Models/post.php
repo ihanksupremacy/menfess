@@ -17,4 +17,9 @@ class post extends Model
 {
     return $this->morphMany('App\Models\Like', 'likable');
 }
+public function likesCount()
+{
+    return $this->morphMany(Like::class, 'likeable')->count();
+}
+
 }

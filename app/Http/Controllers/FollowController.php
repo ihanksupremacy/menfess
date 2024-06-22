@@ -40,6 +40,25 @@ public function destroy($user)
     
         return view('chat.chat', compact('followers','userName'));
     }
+
+    public function follower($username)
+    {
+        $userName = auth()->user()->username;
+        $user = User::where('username', $username)->firstOrFail();
+        $followerIds = $user->followers->pluck('id');
+        $followers = User::whereIn('id', $followerIds)->get();
+    
+        return view('following.index', compact('followers','userName'));
+    }
+    public function following($username)
+    {
+        $userName = auth()->user()->username;
+        $user = User::where('username', $username)->firstOrFail();
+        $followerIds = $user->followings->pluck('id');
+        $followers = User::whereIn('id', $followerIds)->get();
+    
+        return view('following.following', compact('followers','userName'));
+    }
     
     
 

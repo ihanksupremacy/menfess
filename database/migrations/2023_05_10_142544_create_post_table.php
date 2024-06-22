@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id'); 
-            // $table->string('judul');
-            // $table->string('slug')->unique();
             $table->text('isi');
             $table->string('image')->nullable();
             $table->timestamp('published_at')->nullable();

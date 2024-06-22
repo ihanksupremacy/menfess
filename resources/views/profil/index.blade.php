@@ -46,16 +46,12 @@
             </div>
             <div class="profile-stats">
               <div class="stat">
-                <span>{{ $user->posts()->count() }}</span>
-                <p>Posts</p>
-              </div>
-              <div class="stat">
                 <span>{{ $user->followers()->count() }}</span>
-                <p>Followers</p>
+                <a style="text-decoration: none; color:black;" href="/follower/{{$user->username}}"><p>Followers</p></a>
             </div>
             <div class="stat">
                 <span>{{ $user->followings()->count() }}</span>
-                <p>Following</p>
+                <a style="text-decoration: none; color:black;" href="/following/{{$user->username}}"><p>Following</p></a>
             </div>
             </div>
             <div class="profile-description">

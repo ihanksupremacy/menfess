@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Chat extends Model
 {
     use HasFactory;
-    protected $table = 'chats'; // Nama tabel yang sesuai
+    protected $table = 'chats'; 
 
     protected $fillable = ['sender_id', 'receiver_id', 'isipesan'];
     
-    // Definisikan relasi dengan model User untuk sender dan receiver
+
     public function sender()
     {
         return $this->belongsTo(User::class, 'sender_id');
